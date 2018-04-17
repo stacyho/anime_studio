@@ -1,0 +1,76 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+	margin: 0px;
+	max-width: 100%;
+}
+
+#video-container {
+	padding: 15px;
+	height: 100%;
+}
+
+#studio-container {
+	padding: 0px;
+	height: 90%;
+}
+
+#anime-video {
+	width: 100%;
+	max-width: 900px;
+	height: 600px;
+}
+
+.fa-eye {
+	margin-right: 5px;
+}
+
+/* INFO BOX */
+
+#info-box {
+	height: 35%;
+	padding: 15px;
+	border-radius: 5px;
+	margin: 15px;
+	margin-left: 0px;
+	background-color: #F0F0F0;
+	border: 1px solid #BEBEBE;
+}
+
+#info-box h3 {
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#info-icon {
+	width: 35px;
+	height: 35px;
+	margin-right: 5px;
+}
+
+/* 3D MODEL BOX */
+
+#model-box {
+	height: 65%;
+	padding: 15px;
+	border-radius: 5px;
+	margin: 15px;
+	margin-left: 0px;
+	background-color: #F0F0F0;
+	border: 1px solid #BEBEBE;
+}
+
+#model-box h3 {
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#model-icon {
+	width: 60px;
+	height: 60px;
+	margin-right: 5px;
+}
