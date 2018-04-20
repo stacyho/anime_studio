@@ -9,30 +9,33 @@
     <link rel="stylesheet" href="../css/home.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.min.js"></script>
     <script src="../js/threejs/detector.js"></script>
     <script src="../js/threejs/orbitControls.js"></script>
     <script src="../js/threejs/OBJLoader.js"></script>
     <script src="../js/threejs/MTLLoader.js"></script>
+
+    <script src="../js/data.js"></script>
+    <script src="../js/main.js"></script>
     <script src="../js/model_viewer.js"></script>
   </head>
   <body>
-    <nav class="navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="#"> <i class="fa fa-eye"></i> Anime Studio</a>
+    <nav class="navbar">
+      <a class="navbar-brand" href="#"> <i id="brand-icon" class="fas fa-tv"></i> Anime Studio</a>
     </nav>
     <div class="container">
       <div class="row">
         <div class="col-lg-8" id="video-container">
           <div id="video-box">
             <video id="anime-video" controls>
-              <source src="../video/conan-movie.mp4" type="video/mp4">
+              <source src="../video/conan_movie.mp4" type="video/mp4">
             </video>
-            <button id="video-icon-button" type="button" data-toggle="modal" data-target="#panoramic-video-modal">
-              <img src="../img/360-video-icon.png" id="video-icon-img">
+            <button id="show-video-button" type="button" data-toggle="modal" data-target="#panoramic-video-modal">
+              <img src="../img/360-video-icon.png" id="video-icon-img" data-toggle="popover"  data-trigger="hover" data-content="" data-placement="top">
             </button>
-            <button id="model-icon-button" type="button">
-              <img src="../img/3d-model-icon.png" id="model-icon-img">
+            <button id="show-model-button" type="button">
+              <img src="../img/3d-model-icon.png" id="model-icon-img" data-toggle="popover"  data-trigger="hover" data-content="" data-placement="bottom">
             </button>
           </div>
         </div>
@@ -42,24 +45,32 @@
           </div>
           <div id="model-box">
             <h3> <img src="../img/3d-model-icon.png" id="model-icon"> 3D Model </h3>
+            <i id="loading-icon" class="fas fa-spinner fa-pulse fa-5x"></i>
+            <button id="rotate-button" type="button">
+              <i id="rotate-icon" class="fas fa-play-circle fa-2x"></i>
+            </button>
+            <button id="zoom-in-button" type="button">
+              <i id="zoom-in-icon" class="fas fa-plus-square fa-2x"></i>
+            </button>
+            <button id="zoom-out-button" type="button">
+              <i id="zoom-out-icon" class="fas fa-minus-square fa-2x"></i>
+            </button>
             <div id="model-viewer"></div>
           </div>
-        </div>
+        </div fa-5x>
       </div>
     </div>
     <div class="modal fade" id="panoramic-video-modal" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">360 Video</h5>
+            <h5 class="modal-title"> <img src="../img/360-video-icon.png" id="video-icon"> 360 Video</h5>
             <button type="button" class="close" data-dismiss="modal">
               <span>&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <iframe id="panoramic-video"
-              src="https://www.youtube.com/embed/XkhlrLIdcxQ">
-            </iframe>
+            <iframe id="panoramic-video-iframe"></iframe>
           </div>
         </div>
       </div>
