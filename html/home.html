@@ -3,14 +3,19 @@
     <meta charset="utf-8">
     <title>Anime Studio</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans' type='text/css'>
     <link rel="stylesheet" href="../css/home.css">
 
-    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="../js/home.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.min.js"></script>
+    <script src="../js/threejs/detector.js"></script>
+    <script src="../js/threejs/orbitControls.js"></script>
+    <script src="../js/threejs/OBJLoader.js"></script>
+    <script src="../js/threejs/MTLLoader.js"></script>
+    <script src="../js/model_viewer.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-dark bg-dark">
@@ -19,9 +24,17 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8" id="video-container">
-          <iframe id="anime-video"
-            src="https://www.youtube.com/embed/D7gsd5XL39k">
-          </iframe>
+          <div id="video-box">
+            <video id="anime-video" controls>
+              <source src="../video/conan-movie.mp4" type="video/mp4">
+            </video>
+            <button id="video-icon-button" type="button" data-toggle="modal" data-target="#panoramic-video-modal">
+              <img src="../img/360-video-icon.png" id="video-icon-img">
+            </button>
+            <button id="model-icon-button" type="button">
+              <img src="../img/3d-model-icon.png" id="model-icon-img">
+            </button>
+          </div>
         </div>
         <div class="col-lg-4" id="studio-container">
           <div id="info-box">
@@ -29,6 +42,24 @@
           </div>
           <div id="model-box">
             <h3> <img src="../img/3d-model-icon.png" id="model-icon"> 3D Model </h3>
+            <div id="model-viewer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="panoramic-video-modal" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">360 Video</h5>
+            <button type="button" class="close" data-dismiss="modal">
+              <span>&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <iframe id="panoramic-video"
+              src="https://www.youtube.com/embed/XkhlrLIdcxQ">
+            </iframe>
           </div>
         </div>
       </div>
