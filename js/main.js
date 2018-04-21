@@ -12,12 +12,36 @@ $(document).ready(function(){
 
     $('#show-video-button').click(function(e){
     	$('#anime-video').get(0).pause();
+
+    	console.log(currVideoName);
+    	$('#panoramic-video-viewer').show();
     	loadVideo(currVideoName);
+
+    	$('#play-pause-button').show();
+    	$('#back-button').show();
     });
 
-    $('#panoramic-video-modal').on('hidden.bs.modal', function () {
+	$("#play-pause-button").click(function() {
+        if (vrViewPlayer.isPaused) {
+            vrViewPlayer.play();
+            $("#play-pause-icon").addClass("fa-pause-circle");
+            $("#play-pause-icon").removeClass("fa-play-circle");
+        } else {
+            vrViewPlayer.pause();
+            $("#play-pause-icon").addClass("fa-play-circle");
+            $("#play-pause-icon").removeClass("fa-pause-circle");
+        } 
+    });
+
+    $("#back-button").click(function() {
+    	vrViewPlayer.pause();
+
+        $('#play-pause-button').hide();
+    	$('#back-button').hide();
+    	$('#panoramic-video-viewer').hide();
+
     	$('#anime-video').get(0).play();
-	});
+    });
 
     var animeVideo = $('#anime-video').get(0);
     setInterval(function(){
@@ -76,18 +100,17 @@ $(document).ready(function(){
 
 	function loadVideo(videoName) {
 		var rootpath = "http://localhost:8081/";
+		var height = document.getElementById('panoramic-video-viewer').offsetWidth * .63;
 
 		if (!vrViewPlayer) {
 			vrViewPlayer = new VRView.Player('#panoramic-video-viewer', {
 		    	video: rootpath + 'video/' + videoName + '.mp4',
-		    	height: '100%',
+		    	height: height,
 		    	width: '100%'
 		  	});
 		} else {
-			vrViewPlayer.setContentInfo({
-			  	video: rootpath + 'video/' + videoName + '.mp4',
-		    	height: '100%',
-		    	width: '100%'
+			vrViewPlayer.setContent({
+			  	video: rootpath + 'video/' + videoName + '.mp4'
 			});
 		}
 	}
