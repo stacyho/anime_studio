@@ -20,7 +20,7 @@ $( document ).ready(function() {
 
         /* Scene */
         scene = new THREE.Scene();
-        ambient = new THREE.AmbientLight(0xffffff, 1.0);
+        ambient = new THREE.AmbientLight(0xffffff, 1.5);
         scene.add(ambient);
 
         /* Renderer */
@@ -34,7 +34,7 @@ $( document ).ready(function() {
         controls = new THREE.OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
         controls.dampingFactor = 0.25;
-        controls.enableZoom = false;
+        controls.keyPanSpeed = 20.0;
 
         /* Events */
         window.addEventListener('resize', onWindowResize, false);
@@ -53,8 +53,8 @@ $( document ).ready(function() {
     }
 
     function loadModel(modelName) {
-        var rootpath = "../";
-        //var rootpath = "http://localhost:8081/";
+        //var rootpath = "../";
+        var rootpath = "http://localhost:8081/";
 
         var materialFile = modelName + '.mtl';
         var objectFile = modelName + '.obj';
@@ -96,13 +96,15 @@ $( document ).ready(function() {
         controls.update();
     }
 
-    $("#show-model-button").click(function(e) {
-        // currModelName defined in main.js
-        if (!currModelName) {
-            e.stopPropagation();
-            return;
-        }
+    function brighter() {
+        ambient.intensity = Math.min(2.5, ambient.intensity + .25);
+    }
 
+    function darker() {
+        ambient.intensity = Math.max(.5, ambient.intensity - .25);
+    }
+
+    $("#show-model-button").click(function(e) {
         $("#loading-icon").show();
         setTimeout(function() {
             $("#loading-icon").hide();
@@ -111,6 +113,14 @@ $( document ).ready(function() {
         setTimeout(function() {
             loadModel(currModelName);
         }, 500);
+    });
+
+    $("#brighter-button").click(function() {
+        brighter();
+    });
+
+    $("#darker-button").click(function() {
+        darker();
     });
 
     $("#zoom-in-button").click(function() {

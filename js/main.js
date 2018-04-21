@@ -1,5 +1,6 @@
-var currVideoId; // youtube video id for current 360 video
+var currVideoName; // file name for current 360 video (without file extension)
 var currModelName; // file name for current 3d model (without file extension)
+var vrViewPlayer; // player for 360 video
 
 $(document).ready(function(){
 
@@ -10,18 +11,12 @@ $(document).ready(function(){
     });
 
     $('#show-video-button').click(function(e){
-    	if (!currVideoId) {
-    		e.stopPropagation();
-    		return;
-    	}
     	$('#anime-video').get(0).pause();
-    	$("#panoramic-video-iframe").get(0).src += "https://www.youtube.com/embed/" + currVideoId + 
-    		"?controls=1" + "&autoplay=1";
+    	loadVideo(currVideoName);
     });
 
     $('#panoramic-video-modal').on('hidden.bs.modal', function () {
     	$('#anime-video').get(0).play();
-    	$('#panoramic-video-iframe').removeAttr('src');
 	});
 
     var animeVideo = $('#anime-video').get(0);
@@ -43,7 +38,6 @@ $(document).ready(function(){
 				$('#model-icon-img').attr('data-content', model[2]);
 
     			$('#show-model-button').show();
-    			blinkImage('#model-icon-img');
 
 				setInterval(function(){
 					if (animeVideo.currentTime < startTime || animeVideo.currentTime > endTime) {
@@ -51,6 +45,7 @@ $(document).ready(function(){
 						currModelName = "";
 					}
 				},1000);
+				break;
     		}
     	}
     }
@@ -61,35 +56,40 @@ $(document).ready(function(){
     		var startTime = video[0];
     		var endTime = video[1];
     		if (currentTime >= startTime && currentTime <= endTime) {
-    			if (currVideoId == video[3]) {
+    			if (currVideoName == video[3]) {
     				return;
     			}
-    			currVideoId = video[3];
+    			currVideoName = video[3];
 				$('#video-icon-img').attr('data-content', video[2]);
 
 				$('#show-video-button').show();
-    			blinkImage('#video-icon-img');
 
 				setInterval(function(){
 					if (animeVideo.currentTime < startTime || animeVideo.currentTime > endTime) {
 						$('#show-video-button').hide();
-						currVideoId = "";
+						currVideoName = "";
 					}
 				},1000);
     		}
     	}
     }
 
-    function blinkImage(selector){
-	    var timer = setInterval(function(){
-	        $(selector).css("opacity", "0.1");
-	        setTimeout(function(){
-	            $(selector).css("opacity", "1");
-	        }, 250);
-	    }, 400);
-	    setTimeout(function(){
-	    	clearInterval(timer);
-	    }, 2000);
+	function loadVideo(videoName) {
+		var rootpath = "http://localhost:8081/";
+
+		if (!vrViewPlayer) {
+			vrViewPlayer = new VRView.Player('#panoramic-video-viewer', {
+		    	video: rootpath + 'video/' + videoName + '.mp4',
+		    	height: '100%',
+		    	width: '100%'
+		  	});
+		} else {
+			vrViewPlayer.setContentInfo({
+			  	video: rootpath + 'video/' + videoName + '.mp4',
+		    	height: '100%',
+		    	width: '100%'
+			});
+		}
 	}
 
 });
