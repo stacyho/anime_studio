@@ -13,7 +13,6 @@ $(document).ready(function(){
     $('#show-video-button').click(function(e){
     	$('#anime-video').get(0).pause();
 
-    	console.log(currVideoName);
     	$('#panoramic-video-viewer').show();
     	loadVideo(currVideoName);
 
@@ -63,10 +62,11 @@ $(document).ready(function(){
 
     			$('#show-model-button').show();
 
-				setInterval(function(){
+				var timer = setInterval(function(){
 					if (animeVideo.currentTime < startTime || animeVideo.currentTime > endTime) {
 						$('#show-model-button').hide();
 						currModelName = "";
+						clearInterval(timer);
 					}
 				},1000);
 				break;
@@ -88,12 +88,14 @@ $(document).ready(function(){
 
 				$('#show-video-button').show();
 
-				setInterval(function(){
+				var timer = setInterval(function(){
 					if (animeVideo.currentTime < startTime || animeVideo.currentTime > endTime) {
 						$('#show-video-button').hide();
 						currVideoName = "";
+						clearInterval(timer);
 					}
 				},1000);
+				break;
     		}
     	}
     }

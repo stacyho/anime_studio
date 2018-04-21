@@ -53,6 +53,10 @@ $( document ).ready(function() {
     }
 
     function loadModel(modelName) {
+        var existingObject = scene.getObjectByName("object");
+        if (existingObject) {
+            scene.remove(existingObject); 
+        }
         //var rootpath = "../";
         var rootpath = "http://localhost:8081/";
 
@@ -71,13 +75,14 @@ $( document ).ready(function() {
             objLoader.setMaterials(materials);
             objLoader.setPath(rootpath + 'model/');
             objLoader.load(objectFile, function (object) {
+                object.name = "object";
                 scene.add(object);
             });
         });
     }
 
     function zoomIn() {
-        camera.fov = Math.max(50, camera.fov - 10);
+        camera.fov = Math.max(30, camera.fov - 10);
         camera.updateProjectionMatrix();
     }
 
