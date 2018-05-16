@@ -7,14 +7,19 @@ body {
 	max-width: 100%;
 }
 
-#video-container {
+#anime-container {
 	padding: 15px;
-	height: 90%;
+	height: 95%;
+	width: 100%;
+	background-color: black;
 }
 
 #studio-container {
-	padding: 0px;
-	height: 90%;
+	padding: 100px 15px;
+	height: 95%;
+	width: 0%;
+	background-color: black;
+	display: none;
 }
 
 /* NAVBAR */
@@ -41,7 +46,7 @@ body {
 
 /* ANIME VIDEO */
 
-#video-box {
+#anime-box {
 	width: 100%;
 	height: 100%;
 	position: relative;
@@ -49,15 +54,16 @@ body {
 
 #anime-video {
 	width: 100%;
+	height: 100%;
 	position: absolute;
 }
 
 #show-video-button {
-	height: 100px;
-	width: 100px;
+	height: 90px;
+	width: 90px;
 	position: absolute;
-	top: 15px;
-	right: 10px;
+	top: 0px;
+	left: 0px;
 	background: none;
 	border: none;
 	cursor: pointer;
@@ -74,11 +80,11 @@ body {
 }
 
 #show-model-button {
-	height: 100px;
-	width: 100px;
+	height: 90px;
+	width: 90px;
 	position: absolute;
-	top: 120px;
-	right: 10px;
+	top: 0px;
+	left: 90px;
 	background: none;
 	border: none;
 	cursor: pointer;
@@ -98,86 +104,57 @@ button:focus {
 	outline: 0;
 }
 
-/* 360 VIDEO */
+/* 360 VIDEO SECTIOn */
+
+#video-box {
+	height: 100%;
+	padding: 10px;
+	background-color: black;
+	position: relative;
+	display: none;
+}
+
+#video-box h3 {
+	text-align: center;
+	font-size: 15px;
+	font-weight: bold;
+	color: white;
+}
 
 #panoramic-video-viewer {
 	width: 100%;
-	position: absolute;
-	z-index: 10;
-	display: none;
+	height: 95%;
 }
 
 #play-pause-button {
 	position: absolute;
-	top: 10px;
-	left: 50%;
+	bottom: 25px;
+	left: 45%;
 	background: none;
 	border: none;
 	cursor: pointer;
 	z-index: 20;
-	display: none;
 }
 
 #play-pause-icon {
 	color: white;
 }
 
-#back-button {
-	position: absolute;
-	top: 10px;
-	left: 10px;
-	background: none;
-	border: none;
-	cursor: pointer;
-	z-index: 20;
-	display: none;
-}
-
-#back-icon {
-	color: white;
-}
-
-
-/* BACKGROUND INFO SECTION */
-
-#info-box {
-	height: 25%;
-	padding: 10px;
-	border-radius: 5px;
-	margin: 15px;
-	background-color: #F0F0F0;
-	border: 1px solid #BEBEBE;
-}
-
-#info-box h3 {
-	text-align: center;
-	font-size: 15px;
-	font-weight: bold;
-}
-
-#info-icon {
-	width: 20px;
-	height: 20px;
-	margin-right: 5px;
-}
-
 /* 3D MODEL SECTION */
 
 #model-box {
-	height: 70%;
+	height: 100%;
 	padding: 10px;
-	border-radius: 5px;
-	margin: 15px;
-	background-color: #F0F0F0;
-	border: 1px solid #BEBEBE;
+	background-color: black;
 	position: relative;
-	overflow: hidden;
+	display: none;
 }
 
 #model-box h3 {
 	text-align: center;
 	font-size: 15px;
 	font-weight: bold;
+	color: white;
 }
 
 #model-icon {
@@ -196,7 +173,7 @@ button:focus {
 
 #rotate-button {
 	position: absolute;
-	bottom: 15px;
+	bottom: 20px;
 	left: 45%;
 	background: none;
 	border: none;
@@ -209,7 +186,7 @@ button:focus {
 
 #brighter-button {
 	position: absolute;
-	bottom: 55px;
+	bottom: 60px;
 	left: 15px;
 	background: none;
 	border: none;
@@ -222,7 +199,7 @@ button:focus {
 
 #darker-button {
 	position: absolute;
-	bottom: 15px;
+	bottom: 20px;
 	left: 15px;
 	background: none;
 	border: none;
@@ -235,7 +212,7 @@ button:focus {
 
 #zoom-in-button {
 	position: absolute;
-	bottom: 55px;
+	bottom: 60px;
 	right: 15px;
 	background: none;
 	border: none;
@@ -248,7 +225,7 @@ button:focus {
 
 #zoom-out-button {
 	position: absolute;
-	bottom: 15px;
+	bottom: 20px;
 	right: 15px;
 	background: none;
 	border: none;
@@ -259,9 +236,9 @@ button:focus {
 	color: lightgrey;
 }
 
-#model-viewer{
+#model-viewer {
 	width: 100%;
-	height: 93%;
+	height: 95%;
 	border-radius: 5px;
 }
 

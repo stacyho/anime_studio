@@ -11,13 +11,7 @@ $(document).ready(function(){
     });
 
     $('#show-video-button').click(function(e){
-    	$('#anime-video').get(0).pause();
-
-    	$('#panoramic-video-viewer').show();
     	loadVideo(currVideoName);
-
-    	$('#play-pause-button').show();
-    	$('#back-button').show();
     });
 
 	$("#play-pause-button").click(function() {
@@ -30,16 +24,6 @@ $(document).ready(function(){
             $("#play-pause-icon").addClass("fa-play-circle");
             $("#play-pause-icon").removeClass("fa-pause-circle");
         } 
-    });
-
-    $("#back-button").click(function() {
-    	vrViewPlayer.pause();
-
-        $('#play-pause-button').hide();
-    	$('#back-button').hide();
-    	$('#panoramic-video-viewer').hide();
-
-    	$('#anime-video').get(0).play();
     });
 
     var animeVideo = $('#anime-video').get(0);
@@ -101,13 +85,11 @@ $(document).ready(function(){
     }
 
 	function loadVideo(videoName) {
-		var rootpath = "http://localhost:8081/";
-		var height = document.getElementById('panoramic-video-viewer').offsetWidth * .63;
-
+		var rootpath = "http://localhost:8080/";
 		if (!vrViewPlayer) {
 			vrViewPlayer = new VRView.Player('#panoramic-video-viewer', {
 		    	video: rootpath + 'video/' + videoName + '.mp4',
-		    	height: height,
+		    	height: '100%',
 		    	width: '100%'
 		  	});
 		} else {

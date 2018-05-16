@@ -27,8 +27,8 @@
     </nav>
     <div class="container">
       <div class="row">
-        <div class="col-lg-8" id="video-container">
-          <div id="video-box">
+        <div id="anime-container">
+          <div id="anime-box">
             <video id="anime-video" controls>
               <source src="../video/conan_movie.mp4" type="video/mp4">
             </video>
@@ -38,21 +38,18 @@
             <button id="show-model-button" type="button">
               <img src="../img/3d-model-icon.png" id="model-icon-img" data-toggle="popover"  data-trigger="hover" data-content="" data-placement="bottom">
             </button>
+          </div>
+        </div>
+        <div id="studio-container">
+          <div id="video-box">
+            <h3> 360 Video </h3>
             <div id='panoramic-video-viewer'></div>
             <button id="play-pause-button" type="button">
               <i id="play-pause-icon" class="far fa-pause-circle fa-2x"></i>
             </button>
-            <button id="back-button" type="button">
-              <i id="back-icon" class="far fa-arrow-alt-circle-left fa-2x"></i>
-            </button>
-          </div>
-        </div>
-        <div class="col-lg-4" id="studio-container">
-          <div id="info-box">
-            <h3> <img src="../img/info-icon.png" id="info-icon"> Background Info </h3>
           </div>
           <div id="model-box">
-            <h3> <img src="../img/3d-model-icon.png" id="model-icon"> 3D Model </h3>
+            <h3> 3D Model </h3>
             <i id="loading-icon" class="fas fa-spinner fa-pulse fa-5x"></i>
             <button id="rotate-button" type="button">
               <i id="rotate-icon" class="fas fa-play-circle fa-2x"></i>

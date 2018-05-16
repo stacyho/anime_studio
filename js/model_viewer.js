@@ -58,7 +58,7 @@ $( document ).ready(function() {
             scene.remove(existingObject); 
         }
         //var rootpath = "../";
-        var rootpath = "http://localhost:8081/";
+        var rootpath = "http://localhost:8080/";
 
         var materialFile = modelName + '.mtl';
         var objectFile = modelName + '.obj';
