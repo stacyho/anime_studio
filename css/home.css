@@ -23,24 +23,37 @@ body {
 
 /* NAVBAR */
 
-.navbar {
-	background-color: #F5F5F5;
-	border-bottom: 1px solid #D3D3D3;
-}
-
 .navbar-brand {
 	font-weight: bold;
 	font-size: 18px;
-	color: black;
 }
 
-.navbar-brand:hover {
-	color: black;
+.navbar-nav {
+	padding-right: 60px;
+}
+
+.nav-item {
+	padding-left: 50px;
+}
+
+.nav-link, .dropdown-item {
+	font-size: 15px;
+	color: black !important;
 }
 
 #brand-icon {
 	margin-right: 5px;
+	color: #eea29a;
+}
+
+#navbar-video-icon {
+	margin-right: 5px;
 	color: #39CCCC;
+}
+
+#navbar-model-icon {
+	margin-right: 5px;
+	color: #0074D9;
 }
 
 /* ANIME VIDEO */
@@ -58,8 +71,8 @@ body {
 }
 
 #show-video-button {
-	height: 90px;
-	width: 90px;
+	height: 100px;
+	width: 100px;
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -67,10 +80,6 @@ body {
 	border: none;
 	cursor: pointer;
 	display: none;
-}
-
-#show-video-button:hover {
-	opacity: .8;
 }
 
 #video-icon-img {
@@ -82,16 +91,12 @@ body {
 	height: 90px;
 	width: 90px;
 	position: absolute;
-	top: 0px;
-	left: 90px;
+	top: 5px;
+	left: 100px;
 	background: none;
 	border: none;
 	cursor: pointer;
 	display: none;
-}
-
-#show-model-button:hover {
-	opacity: .8;
 }
 
 #model-icon-img {
@@ -116,8 +121,7 @@ button:focus {
 
 #video-box h3 {
 	text-align: center;
-	font-size: 15px;
-	font-weight: bold;
+	font-size: 16px;
 	color: white;
 }
 
@@ -167,8 +171,7 @@ button:focus {
 
 #model-box h3 {
 	text-align: center;
-	font-size: 15px;
-	font-weight: bold;
+	font-size: 16px;
 	color: white;
 }
 

@@ -18,12 +18,30 @@
     <script src="https://storage.googleapis.com/vrview/2.0/build/vrview.min.js"></script>
 
     <script src="../js/data.js"></script>
-    <script src="../js/model_viewer.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/model_viewer.js"></script>
   </head>
   <body>
-    <nav class="navbar">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#"> <i id="brand-icon" class="fas fa-tv"></i> Anime Studio</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+              <i id="navbar-video-icon" class="fas fa-film"></i> 360 Videos
+            </a>
+            <div id="dropdown-videos" class="dropdown-menu">
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+              <i id="navbar-model-icon" class="far fa-object-ungroup"></i> 3D Models
+            </a>
+            <div id="dropdown-models" class="dropdown-menu">
+            </div>
+          </li>
+        </ul>
+      </div>
     </nav>
     <div class="container">
       <div class="row">
@@ -32,17 +50,17 @@
             <video id="anime-video" controls>
               <source src="../video/conan_movie.mp4" type="video/mp4">
             </video>
-            <button id="show-video-button" type="button" data-toggle="modal" data-target="#panoramic-video-modal">
-              <img src="../img/360-video-icon.png" id="video-icon-img" data-toggle="popover"  data-trigger="hover" data-content="" data-placement="top">
+            <button id="show-video-button" type="button">
+              <img src="../img/360-video-icon.png" id="video-icon-img">
             </button>
             <button id="show-model-button" type="button">
-              <img src="../img/3d-model-icon.png" id="model-icon-img" data-toggle="popover"  data-trigger="hover" data-content="" data-placement="bottom">
+              <img src="../img/3d-model-icon.png" id="model-icon-img">
             </button>
           </div>
         </div>
         <div id="studio-container">
           <div id="video-box">
-            <h3> 360 Video </h3>
+            <h3 id="video-name"> 360 Video </h3>
             <button id="close-video-button">
               <i id="close-video-icon" class="far fa-times-circle"></i>
             </button>
@@ -52,7 +70,7 @@
             </button>
           </div>
           <div id="model-box">
-            <h3> 3D Model </h3>
+            <h3 id="model-name"> 3D Model </h3>
             <button id="close-model-button" type="button">
               <i id="close-model-icon" class="far fa-times-circle"></i>
             </button>

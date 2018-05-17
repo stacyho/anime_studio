@@ -139,6 +139,10 @@ $( document ).ready(function() {
     });
 
     $("#show-model-button").click(function(e) {
+        if ($('#video-box').css("display") != 'none') {
+            vrViewPlayer.pause();
+            $('#video-box').hide();
+        }
         $('#studio-container').show();
         $('#model-box').show();
 
@@ -150,8 +154,9 @@ $( document ).ready(function() {
             $("#loading-icon").hide();
         }, 1000);
 
+        $('#model-name').text(currModelName);
         setTimeout(function() {
-            loadModel(currModelName);
+            loadModel(currModelFileName);
         }, 500);
     });
 
@@ -162,6 +167,37 @@ $( document ).ready(function() {
 
         $('#studio-container').hide();
         $('#model-box').hide();
+    });
+
+    var dropdownModels = $("#dropdown-models");
+    modelData.forEach(function(data) {
+        var item = $("<a class='dropdown-item' href='#'/>").text(data[2]);
+        $(item).click(function(){
+            if ($('#video-box').css("display") != 'none') {
+                vrViewPlayer.pause();
+                $('#video-box').hide();
+            }
+            $('#studio-container').show();
+            $('#model-box').show();
+
+            $('#anime-container').animate({width: '70%'});
+            $('#studio-container').animate({width: '30%'});
+
+            $('#model-name').text(data[2]);
+
+            $("#loading-icon").show();
+            setTimeout(function() {
+                $("#loading-icon").hide();
+            }, 1000);
+
+            setTimeout(function() {
+                loadModel(data[3]);
+            }, 500);
+
+            $('#anime-video').get(0).currentTime = data[0];
+            $('#anime-video').get(0).play();
+        });
+        dropdownModels.append(item);
     });
 
 });
