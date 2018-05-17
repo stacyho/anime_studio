@@ -5,20 +5,19 @@ body {
 .container {
 	margin: 0px;
 	max-width: 100%;
+	background-color: black;
 }
 
 #anime-container {
 	padding: 15px;
 	height: 95%;
 	width: 100%;
-	background-color: black;
 }
 
 #studio-container {
 	padding: 100px 15px;
 	height: 95%;
 	width: 0%;
-	background-color: black;
 	display: none;
 }
 
@@ -111,6 +110,7 @@ button:focus {
 	padding: 10px;
 	background-color: black;
 	position: relative;
+	overflow: hidden;
 	display: none;
 }
 
@@ -119,6 +119,20 @@ button:focus {
 	font-size: 15px;
 	font-weight: bold;
 	color: white;
+}
+
+#close-video-button {
+	position: absolute;
+	top: 0;
+	right: 10;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+#close-video-icon {
+	color: lightgrey;
+	font-size: 1.5em;
 }
 
 #panoramic-video-viewer {
@@ -147,6 +161,7 @@ button:focus {
 	padding: 10px;
 	background-color: black;
 	position: relative;
+	overflow: hidden;
 	display: none;
 }
 
@@ -155,6 +170,20 @@ button:focus {
 	font-size: 15px;
 	font-weight: bold;
 	color: white;
+}
+
+#close-model-button {
+	position: absolute;
+	top: 0;
+	right: 10;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+#close-model-icon {
+	color: lightgrey;
+	font-size: 1.5em;
 }
 
 #model-icon {
@@ -173,7 +202,7 @@ button:focus {
 
 #rotate-button {
 	position: absolute;
-	bottom: 20px;
+	bottom: 25px;
 	left: 45%;
 	background: none;
 	border: none;
@@ -186,7 +215,7 @@ button:focus {
 
 #brighter-button {
 	position: absolute;
-	bottom: 60px;
+	bottom: 65px;
 	left: 15px;
 	background: none;
 	border: none;
@@ -199,7 +228,7 @@ button:focus {
 
 #darker-button {
 	position: absolute;
-	bottom: 20px;
+	bottom: 25px;
 	left: 15px;
 	background: none;
 	border: none;
@@ -212,7 +241,7 @@ button:focus {
 
 #zoom-in-button {
 	position: absolute;
-	bottom: 60px;
+	bottom: 65px;
 	right: 15px;
 	background: none;
 	border: none;
@@ -225,7 +254,7 @@ button:focus {
 
 #zoom-out-button {
 	position: absolute;
-	bottom: 20px;
+	bottom: 25px;
 	right: 15px;
 	background: none;
 	border: none;

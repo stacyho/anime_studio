@@ -18,8 +18,8 @@
     <script src="https://storage.googleapis.com/vrview/2.0/build/vrview.min.js"></script>
 
     <script src="../js/data.js"></script>
-    <script src="../js/main.js"></script>
     <script src="../js/model_viewer.js"></script>
+    <script src="../js/main.js"></script>
   </head>
   <body>
     <nav class="navbar">
@@ -43,6 +43,9 @@
         <div id="studio-container">
           <div id="video-box">
             <h3> 360 Video </h3>
+            <button id="close-video-button">
+              <i id="close-video-icon" class="far fa-times-circle"></i>
+            </button>
             <div id='panoramic-video-viewer'></div>
             <button id="play-pause-button" type="button">
               <i id="play-pause-icon" class="far fa-pause-circle fa-2x"></i>
@@ -50,6 +53,9 @@
           </div>
           <div id="model-box">
             <h3> 3D Model </h3>
+            <button id="close-model-button" type="button">
+              <i id="close-model-icon" class="far fa-times-circle"></i>
+            </button>
             <i id="loading-icon" class="fas fa-spinner fa-pulse fa-5x"></i>
             <button id="rotate-button" type="button">
               <i id="rotate-icon" class="fas fa-play-circle fa-2x"></i>
@@ -61,10 +67,10 @@
               <i id="darker-icon" class="far fa-moon fa-2x"></i>
             </button>
             <button id="zoom-in-button" type="button">
-              <i id="zoom-in-icon" class="fas fa-plus-square fa-2x"></i>
+              <i id="zoom-in-icon" class="fas fa-search-plus fa-2x"></i>
             </button>
             <button id="zoom-out-button" type="button">
-              <i id="zoom-out-icon" class="fas fa-minus-square fa-2x"></i>
+              <i id="zoom-out-icon" class="fas fa-search-minus fa-2x"></i>
             </button>
             <div id="model-viewer"></div>
           </div>

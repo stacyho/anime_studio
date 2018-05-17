@@ -11,7 +11,23 @@ $(document).ready(function(){
     });
 
     $('#show-video-button').click(function(e){
+    	$('#studio-container').show();
+        $('#video-box').show();
+
+        $('#anime-container').animate({width: '60%'});
+        $('#studio-container').animate({width: '40%'});
+
     	loadVideo(currVideoName);
+    });
+
+    $("#close-video-button").click(function() {
+    	vrViewPlayer.pause();
+    	
+        $('#anime-container').animate({width: '100%'});
+        $('#studio-container').animate({width: '0%'});
+
+        $('#studio-container').hide();
+        $('#video-box').hide();
     });
 
 	$("#play-pause-button").click(function() {
@@ -97,6 +113,8 @@ $(document).ready(function(){
 			  	video: rootpath + 'video/' + videoName + '.mp4'
 			});
 		}
+		$("#play-pause-icon").addClass("fa-pause-circle");
+        $("#play-pause-icon").removeClass("fa-play-circle");
 	}
 
 });
