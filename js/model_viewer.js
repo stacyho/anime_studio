@@ -143,11 +143,14 @@ $( document ).ready(function() {
             vrViewPlayer.pause();
             $('#video-box').hide();
         }
+        if ($('#map-box').css("display") != 'none') {
+            $('#map-box').hide();
+        }
         $('#studio-container').show();
         $('#model-box').show();
 
-        $('#anime-container').animate({width: '70%'});
-        $('#studio-container').animate({width: '30%'});
+        $('#anime-container').animate({width: '60%'});
+        $('#studio-container').animate({width: '40%'});
 
         $("#loading-icon").show();
         setTimeout(function() {
@@ -177,11 +180,14 @@ $( document ).ready(function() {
                 vrViewPlayer.pause();
                 $('#video-box').hide();
             }
+            if ($('#map-box').css("display") != 'none') {
+                $('#map-box').hide();
+            }
             $('#studio-container').show();
             $('#model-box').show();
 
-            $('#anime-container').animate({width: '70%'});
-            $('#studio-container').animate({width: '30%'});
+            $('#anime-container').animate({width: '60%'});
+            $('#studio-container').animate({width: '40%'});
 
             $('#model-name').text(data[2]);
 

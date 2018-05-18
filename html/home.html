@@ -16,10 +16,74 @@
     <script src="../js/threejs/OBJLoader.js"></script>
     <script src="../js/threejs/MTLLoader.js"></script>
     <script src="https://storage.googleapis.com/vrview/2.0/build/vrview.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRYYD1DboJX7s7OhfnEPZdKaWBFi2wnEk&callback=initMap"
+    async defer></script>
 
     <script src="../js/data.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/video_viewer.js"></script>
     <script src="../js/model_viewer.js"></script>
+    <script src="../js/map.js"></script>
+
+    <script>
+      var map;
+      var markers = [];
+      var prevLocationIndex = -1;
+
+      function initMap() {
+        var kyoto = {lat: 35.0116, lng: 135.7680};
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: kyoto,
+          zoom: 12
+        });
+        initMarkers();
+      }
+
+      function initMarkers() {
+        mapData.forEach(function(data){
+          var marker = new google.maps.Marker({
+            position: data[2],
+            map: null
+          });
+          var infowindow = new google.maps.InfoWindow({
+            content: data[1]
+          });
+          
+          marker.addListener('mouseover', function(){
+            infowindow.open(map, marker);
+          });
+          marker.addListener('mouseout', function(){
+            infowindow.close();
+          });
+          marker.addListener('click', function(){
+            $('#anime-video').get(0).currentTime = data[0];
+            $('#anime-video').get(0).play();
+          });
+          markers.push(marker);
+        });
+      }
+
+      setInterval(function(){
+        updateMarkers();
+        prevLocationIndex = currLocationIndex;
+      }, 500);
+
+      function updateMarkers() {
+        if (currLocationIndex == prevLocationIndex) {
+          return;
+        }
+        if (currLocationIndex > prevLocationIndex) {
+          for (var i = Math.max(0,prevLocationIndex); i <= currLocationIndex; i++) {
+            markers[i].setMap(map);
+          }
+        }
+        if (currLocationIndex < prevLocationIndex) {
+          for (var i = prevLocationIndex; i > currLocationIndex; i--) {
+            markers[i].setMap(null);
+          }
+        }
+      }
+    </script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -39,6 +103,9 @@
             </a>
             <div id="dropdown-models" class="dropdown-menu">
             </div>
+          </li>
+          <li class="nav-item">
+            <a id="map-tab" class="nav-link" href="#"> <i id="navbar-map-icon" class="far fa-map"></i> Map </a>
           </li>
         </ul>
       </div>
@@ -60,7 +127,7 @@
         </div>
         <div id="studio-container">
           <div id="video-box">
-            <h3 id="video-name"> 360 Video </h3>
+            <h3 id="video-name"></h3>
             <button id="close-video-button">
               <i id="close-video-icon" class="far fa-times-circle"></i>
             </button>
@@ -68,9 +135,15 @@
             <button id="play-pause-button" type="button">
               <i id="play-pause-icon" class="far fa-pause-circle fa-2x"></i>
             </button>
+            <button id="volume-off-button" type="button">
+              <i id="volume-off-icon" class="fas fa-volume-down fa-2x"></i>
+            </button>
+            <button id="volume-on-button" type="button">
+              <i id="volume-on-icon" class="fas fa-volume-up fa-2x"></i>
+            </button>
           </div>
           <div id="model-box">
-            <h3 id="model-name"> 3D Model </h3>
+            <h3 id="model-name"></h3>
             <button id="close-model-button" type="button">
               <i id="close-model-icon" class="far fa-times-circle"></i>
             </button>
@@ -91,6 +164,12 @@
               <i id="zoom-out-icon" class="fas fa-search-minus fa-2x"></i>
             </button>
             <div id="model-viewer"></div>
+          </div>
+          <div id="map-box">
+            <button id="close-map-button">
+              <i id="close-map-icon" class="far fa-times-circle"></i>
+            </button>
+            <div id='map'></div>
           </div>
         </div fa-5x>
       </div>
