@@ -27,8 +27,8 @@ $(document).ready(function() {
     	$('#studio-container').show();
         $('#video-box').show();
 
-        $('#anime-container').animate({width: '60%'});
-        $('#studio-container').animate({width: '40%'});
+        $('#anime-container').animate({width: '55%'});
+        $('#studio-container').animate({width: '45%'});
 
         $('#video-name').text(currVideoName);
     	loadVideo(currVideoFileName);
@@ -81,8 +81,8 @@ $(document).ready(function() {
 		   	$('#studio-container').show();
 	        $('#video-box').show();
 
-	        $('#anime-container').animate({width: '60%'});
-	        $('#studio-container').animate({width: '40%'});
+	        $('#anime-container').animate({width: '55%'});
+	        $('#studio-container').animate({width: '45%'});
 
 	        $('#video-name').text(data[2]);
 	    	loadVideo(data[3]);
