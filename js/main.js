@@ -5,6 +5,7 @@ var currModelFileName; // file name for current 3d model (without file extension
 var currModelName;
 
 var currLocationIndex = -1; // index into mapData, for the latest location to be included on the map
+var currLocationName;
 
 var vrViewPlayer; // player for 360 video
 
@@ -14,6 +15,7 @@ $(document).ready(function(){
     setInterval(function(){
     	findModelAtTime(animeVideo.currentTime);
     	findVideoAtTime(animeVideo.currentTime);
+    	findLocationAtTime(animeVideo.currentTime);
     	findLocationsBeforeTime(animeVideo.currentTime);
     }, 1000);
 
@@ -61,6 +63,31 @@ $(document).ready(function(){
 					if (animeVideo.currentTime < startTime || animeVideo.currentTime > endTime) {
 						$('#show-video-button').hide();
 						currVideoFileName = "";
+						clearInterval(timer);
+					}
+				},1000);
+				break;
+    		}
+    	}
+    }
+
+    function findLocationAtTime(currentTime) {
+    	for (var i = 0; i < mapData.length; i++) {
+    		data = mapData[i];
+    		var startTime = data[0];
+    		var endTime = startTime + 10;
+    		if (currentTime >= startTime && currentTime <= endTime) {
+    			if (currLocationName == data[1]) {
+    				return;
+    			}
+    			currLocationName = data[1];
+
+				$('#show-map-button').show();
+
+				var timer = setInterval(function(){
+					if (animeVideo.currentTime < startTime || animeVideo.currentTime > endTime) {
+						$('#show-map-button').hide();
+						currLocationName = "";
 						clearInterval(timer);
 					}
 				},1000);

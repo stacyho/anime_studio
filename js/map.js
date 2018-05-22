@@ -23,4 +23,19 @@ $(document).ready(function() {
 	    $('#model-box').hide();
 	});
 
+	$("#show-map-button").click(function(e) {
+        if ($('#video-box').css("display") != 'none') {
+            vrViewPlayer.pause();
+            $('#video-box').hide();
+        }
+    	if ($('#model-box').css("display") != 'none') {
+    		$('#model-box').hide();
+    	}
+        $('#studio-container').show();
+        $('#map-box').show();
+
+        $('#anime-container').animate({width: '60%'});
+        $('#studio-container').animate({width: '40%'});
+    });
+
 });

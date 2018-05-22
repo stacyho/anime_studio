@@ -109,6 +109,23 @@ body {
 	width: 100%;
 }
 
+#show-map-button {
+	height: 90px;
+	width: 70px;
+	position: absolute;
+	top: 5px;
+	left: 200px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	display: none;
+}
+
+#pin-icon-img {
+	height: 100%;
+	width: 100%;
+}
+
 button:focus {
 	outline: 0;
 }
